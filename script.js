@@ -25,7 +25,10 @@ function sendWhatsAppMessage() {
     var message = "LAUNDRY ARAB"
     var encodedMessage = encodeURIComponent(message);
     var whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+    var bgMusic2 = document.getElementById("bgMusic2");
     window.open(whatsappURL, '_blank');
+    bgMusic2.pause();
+    bgMusic2.currentTime = 0
 }
 
 document.addEventListener("DOMContentLoaded", function() {
