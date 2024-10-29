@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+        <link href="style.css" rel="stylesheet"/>
+    </head>
+    <body class="bg-pink-200 flex items-center justify-center min-h-screen p-4">
+        <div id="hearts-container" class="fixed inset-0 pointer-events-none z-0"></div>
+        <!-- MUSIC -->
+        <audio id="bgMusic" style="display: none;">
+            <source src="https://cdn.discordapp.com/attachments/1156554502577594400/1300728040472449044/Feast_-_Nina_Official_Compilation_Fan_Video.mp3?ex=6721e4e3&is=67209363&hm=59074fcd8c3d5a49e6645ed3adfd7a19775665fb6da7c593813497c6b6918f3a&" type="audio/mpeg">
+        </audio>
+        <!-- MUSIC -->
+
+        <!-- AWAL -->
+        <div class="bg-red-200 p-8 rounded-lg shadow-lg w-96" id="pass">
+            <div class="flex justify-center mb-4">
+                <img alt="Cartoon couple with hearts around them" class="rounded-lg" height="200" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300727189620396032/image.png?ex=6721e418&is=67209298&hm=6e54de005b202faad98c6342b80120715ffa9f6adea3e8246e47e35847d61d96&" width="200"/>
+            </div>
+            <div class="text-center text-lg font-semibold mb-4">
+                Butuh PIN
+            </div>
+            <div id="passcode-display" class="text-center text-xl font-bold mb-4"></div>
+            <div class="grid grid-cols-3 gap-4">
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="1">1</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="2">2</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="3">3</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="4">4</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="5">5</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="6">6</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="7">7</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="8">8</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="9">9</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="*">DEL</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="0">0</button>
+                <button class="bg-gray-200 p-4 rounded-lg text-xl font-bold keypad-button" data-value="#">OK</button>
+            </div>
+        </div>
+        <!-- AWAL -->
+
+        <!-- CARD 1 -->
+        <div class="relative hidden" id="card1">
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <i class="fas fa-heart text-red-500 text-6xl">
+                </i>
+            </div>
+            <div class="bg-pink-100 border-2 border-pink-500 rounded-lg p-4 flex items-center space-x-4 relative">
+                <img alt="A couple smiling at a fair with bright lights in the background" class="w-24 h-24 rounded-full border-2 border-pink-500" height="100" src=https://cdn.discordapp.com/attachments/1156554502577594400/1300728849566531585/4e32998c-a51f-4157-b3b6-47ffe2c7c34c.jpg?ex=6721e5a4&is=67209424&hm=43e0f7d201d86e98710eea09fdf72ce91c050b8dfea78dc96f95bcebe6b4e690&" width="100"/>
+                <button id="showCard2" class="flex items-center bg-white rounded-full px-4 py-2 border-2 border-pink-500 focus:outline-none">
+                    <span class="text-pink-700 font-bold">Sudah berapa Lama kita?</span>
+                    <i class="fas fa-search text-pink-700 ml-2"></i>
+                </button>
+            </div>
+        </div>
+        <!-- CARD 1 -->
+
+        <!-- CARD 2 -->
+        <div id="card2" class="bg-blue-200 p-4 md:p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 w-full max-w-4xl hidden">
+            <img alt="A couple taking a selfie in a car" class="rounded-lg shadow-md" height="200" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300735522100215850/image.png?ex=6721ebda&is=67209a5a&hm=88b40bf9b1aeaeb063cc8827b808072c6a30076e000fa0d1e47e8a9e51744a92&" width="300"/>
+            <div class="text-center">
+                <div id="countdown" class="text-3xl md:text-5xl font-bold flex space-x-2">
+                    <span id="days">0</span>
+                    <span>:</span>
+                    <span id="hours">00</span>
+                    <span>:</span>
+                    <span id="minutes">00</span>
+                    <span>:</span>
+                    <span id="seconds">00</span>
+                </div>
+                <div class="text-sm md:text-lg font-medium flex space-x-2 md:space-x-8 mt-2">
+                    <span>Hari</span>
+                    <span>Jam</span>
+                    <span>Menit</span>
+                    <span>Detik</span>
+                </div>
+            </div>
+            <div id="showCard3" class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-pink-400 to-red-400 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 cursor-pointer">
+                <i class="fas fa-arrow-right text-2xl text-white animate-pulse"></i>
+            </div>
+        </div>
+        <!-- CARD 2 -->
+         
+        <!-- CARD 3 -->
+        <div id="card3" class="text-center hidden">
+            <div class="relative inline-block">
+                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                    <i class="fas fa-heart text-red-600 text-4xl"></i>
+                </div>
+                <div class="bg-orange-300 rounded-full px-4 py-2 inline-flex items-center space-x-2">
+                    <span class="font-bold">RECAP DIKIT SYANGKUUU</span>
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            <div class="flex justify-center space-x-8 mt-8">
+                <div class="text-center">
+                    <button id="showCard4" class="mt-4 bg-yellow-200 rounded-full w-16 h-16 text-purple-900 flex items-center justify-center border-2 border-purple-900 mx-auto hover:bg-yellow-300 transition-colors duration-300">
+                        <i class="fas fa-comment-dots text-4xl"></i>
+                    </button>
+                </div>
+                <div class="text-center">
+                    <button id="showCard5" class="mt-4 bg-green-300 rounded-full w-16 h-16 text-purple-900 flex items-center justify-center border-2 border-purple-900 mx-auto hover:bg-green-400 transition-colors duration-300">
+                        <i class="fas fa-camera text-4xl"></i>
+                    </button>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-300 rounded-full p-6">
+                        <i class="fas fa-user text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 text-sm">
+                <span>Made with Love</span>
+            </div>
+        </div>
+        <!-- CARD 3 -->
+
+        <!-- CARD 4 -->
+        <div id="card4" class="hidden">
+            <div class="text-center mb-4 w-full max-w-2xl">
+                <div class="bg-yellow-200 rounded-full px-4 py-2 inline-block border-4 border-purple-900 w-full">
+                    <h1 class="text-2xl text-purple-900">
+                        Chatan pertama kita
+                        <i class="fas fa-plane"></i>
+                    </h1>
+                </div>
+            </div>
+            <div class="bg-yellow-200 p-4 rounded-lg border-4 border-purple-900 inline-block w-full max-w-2xl">
+                <div class="flex flex-col md:flex-row">
+                    <div class="p-2 rounded-lg w-full md:w-1/2 h-96 overflow-y-auto">
+                        <img alt="Screenshot of chat conversation" 
+                             class="rounded-lg w-full h-full object-contain" 
+                             src="https://cdn.discordapp.com/attachments/1156554502577594400/1300754472460488724/image.png?ex=6721fd81&is=6720ac01&hm=45ecacd39f390347c6f5a5ca556b75a8b616abc8b4e0a590ef51fc369d267729&" 
+                        />
+                    </div>
+                    <div class="ml-0 md:ml-4 mt-4 md:mt-0 text-left w-full md:w-1/2 h-96 overflow-y-auto flex items-center justify-center">
+                        <p class="text-lg md:text-xl lg:text-2xl font-bold text-center px-4 leading-tight">
+                            Sebenernya bukan ini chat pertama kita tapi ini chat saat kita pindah dari tinder
+                            kaget dikit waktu tau kamu jauh dan ge expect kamu yang chat duluan
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 w-full max-w-1xl">
+                <button id="backc3" class="bg-yellow-200 rounded-full px-4 py-3 text-purple-900 flex items-center border-2 border-purple-900 w-full justify-center text-lg font-bold">
+                    <i class="fas fa-backward mr-2"></i>
+                    back sayangku
+                </button>
+            </div>
+        </div>
+        <!-- CARD 4 -->
+
+        <!-- CARD 5 -->
+        <div id="card5" class="text-center hidden">
+            <div class="bg-yellow-200 rounded-full px-6 py-3 inline-block mb-4">
+                <h1 class="text-2xl font-bold">
+                    Our first met
+                    <i class="fas fa-plane"></i>
+                </h1>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <img alt="Image of two people posing together" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300761359520108545/4e32998c-a51f-4157-b3b6-47ffe2c7c34c_2.jpg?ex=672203eb&is=6720b26b&hm=5ff5d4ce2e2d798290eede4801d416cc04cb8b7476a0ebc5f26c14e2d7c8c52f&" width="150"/>
+                <img alt="Image of two people in a photo booth" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762680365416458/IMG_5430_1.jpg?ex=67220526&is=6720b3a6&hm=9eaabb395774261b9b1be2ea09d080447c7355ea7b7b31d752b079b18d381741&" width="150"/>
+                <img alt="Image of two people smiling" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762680742641685/IMG_5429_1.jpg?ex=67220526&is=6720b3a6&hm=cde1a621c3bfd283e0d3503d1bfa61615e385f48d338df7ec3e44e1222d31cad&" width="150"/>
+                <img alt="Image of two people posing together" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762681493557331/IMG_5426_1.jpg?ex=67220526&is=6720b3a6&hm=180cbe51f85494c7b82b22ca2a44c8f93dd033491acfb6810cd5e0c7023eebc5&" width="150"/>
+                <img alt="Image of two people with friends" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762681493557331/IMG_5426_1.jpg?ex=67220526&is=6720b3a6&hm=180cbe51f85494c7b82b22ca2a44c8f93dd033491acfb6810cd5e0c7023eebc5&" width="150"/>
+                <img alt="Image of two people with friends" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762681980223599/IMG_5433_1.jpg?ex=67220526&is=6720b3a6&hm=5710834a04736434f92832e16fab343c1168b9dc430807c25b4a9a7461747b44&" width="150"/>
+                <img alt="Image of two people posing together" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762682366103562/IMG_5434_1.jpg?ex=67220526&is=6720b3a6&hm=aa2ebc1f592ba119a4703c15fb1d517d921665c13e0e772711cfffa2d5965881&" width="150"/>
+                <img alt="Image of two people eating" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762683322273872/IMG_5432_1.jpg?ex=67220526&is=6720b3a6&hm=09dfff74283d144217478be2640b80d7f54d66f8804809b3976b4c021e62b781&" width="150"/>
+                <img alt="Image of two people posing together" class="rounded-lg border-4 border-purple-300" height="150" src="https://cdn.discordapp.com/attachments/1156554502577594400/1300762683641171978/IMG_5431_1.jpg?ex=67220526&is=6720b3a6&hm=117e47d8fed15c88410d46b944a34164362067f89c25bcf0876f711e5c0566dc&" width="150"/>
+                <img alt="NO ALBUM" class="rounded-lg border-4 border-purple-300" height="150" src="https://www.deviantart.com/somemilk/art/Spongebob-13-150x150-PNG-133819725" width="150"/>
+                <img alt="NO ALBUM" class="rounded-lg border-4 border-purple-300" height="150" src="https://www.deviantart.com/somemilk/art/Spongebob-13-150x150-PNG-133819725" width="150"/>
+                <img alt="NO ALBUM" class="rounded-lg border-4 border-purple-300" height="150" src="https://www.deviantart.com/somemilk/art/Spongebob-13-150x150-PNG-133819725" width="150"/>
+            </div>
+            <div class="bg-yellow-200 rounded-full px-6 py-3 inline-block mt-4">
+                <button id="backc5" class="text-2xl font-bold">
+                    <i class="fas fa-backward"></i>
+                    back sayangku
+                </button>
+            </div>
+        </div>
+        <!-- CARD 5 -->
+        <script src="script.js"></script>
+    </body>
+</html>
