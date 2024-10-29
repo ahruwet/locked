@@ -63,7 +63,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //music
     const bgMusic = document.getElementById("bgMusic");
+    const bgMusic2 = document.getElementById("bgMusic2");
     bgMusic.volume = 0.2;
+    bgMusic2.volume = 0.2;
     //music
     //element//
 
@@ -115,6 +117,12 @@ document.addEventListener("DOMContentLoaded", function() {
     showCard7Button.addEventListener("click", function() {
         card6.classList.add('hidden');
         card7.classList.remove('hidden');
+
+        if (bgMusic) {
+            bgMusic.pause();
+            bgMusic.currentTime = 0;
+            bgMusic2.play()
+        }
     });
 
     backc3Button.addEventListener("click", function() {
