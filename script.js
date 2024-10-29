@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // PASSWORD
     let passcode = "";
-    const correctPasscode = "11312004";
+    const correctPasscode = "16042004";
     const buttons = document.querySelectorAll(".keypad-button");
     const display = document.getElementById("passcode-display");
     // PASSWORD
