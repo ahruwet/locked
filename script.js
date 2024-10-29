@@ -20,6 +20,14 @@ function startHearts() {
     setInterval(createHeart, 300);
 }
 
+function sendWhatsAppMessage() {
+    var phoneNumber = "6285315388063";
+    var message = "LAUNDRY ARAB"
+    var encodedMessage = encodeURIComponent(message);
+    var whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+    window.open(whatsappURL, '_blank');
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     startHearts();
 
@@ -39,11 +47,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const card3 = document.getElementById("card3");
     const card4 = document.getElementById("card4");
     const card5 = document.getElementById("card5");
+    const card6 = document.getElementById("card6");
+    const card7 = document.getElementById("card7");
 
     const showCard2Button = document.getElementById("showCard2");
     const showCard3Button = document.getElementById("showCard3");
     const showCard4Button = document.getElementById("showCard4");
     const showCard5Button = document.getElementById("showCard5");
+    const showCard6Button = document.getElementById("showCard6");
+    const showCard7Button = document.getElementById("toc7");
 
     const backc3Button = document.getElementById("backc3");
     const backc5Button = document.getElementById("backc5");
@@ -95,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function() {
     showCard5Button.addEventListener("click", function() {
         card3.classList.add('hidden');
         card5.classList.remove('hidden');
+    });
+    showCard6Button.addEventListener("click", function() {
+        card3.classList.add('hidden');
+        card6.classList.remove('hidden');
+    });
+    showCard7Button.addEventListener("click", function() {
+        card6.classList.add('hidden');
+        card7.classList.remove('hidden');
     });
 
     backc3Button.addEventListener("click", function() {
